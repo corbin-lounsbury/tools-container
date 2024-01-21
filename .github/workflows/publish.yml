@@ -27,4 +27,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: clounsbury1/clockbox:latest
+          tags: clounsbury1/tools-container:latest
