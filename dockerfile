@@ -28,3 +28,10 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
 
 # install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+
+# Install azure functions core tools
+RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
+    mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \
+    curl -sL https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/microsoft-prod.list && \
+    apt update && apt install -y azure-functions-core-tools-3
+    
