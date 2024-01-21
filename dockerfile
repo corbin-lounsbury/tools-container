@@ -14,7 +14,8 @@ RUN apt update && apt install -y \
     ca-certificates \
     software-properties-common\
     python3 \
-    python3-pip
+    python3-pip \
+    ansible
 
 # install terraform and packer latest versions
 RUN wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
@@ -34,4 +35,3 @@ RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >
     mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \
     curl -sL https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/microsoft-prod.list && \
     apt update && apt install -y azure-functions-core-tools-3
-    
