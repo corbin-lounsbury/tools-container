@@ -34,4 +34,4 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
     mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \
     curl -sL https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/microsoft-prod.list && \
-    apt update && apt install -y azure-functions-core-tools-3
+    apt update && apt install -y azure-functions-core-tools-4
