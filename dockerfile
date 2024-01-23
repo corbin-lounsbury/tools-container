@@ -35,7 +35,7 @@ RUN mkdir -p /etc/apt/keyrings && \
     AZ_DIST=$(lsb_release -cs) && \
     echo "deb [arch=`dpkg --print-architecture` signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ $AZ_DIST main" | \
     tee /etc/apt/sources.list.d/azure-cli.list && \
-    apt-get update && apt-get install azure-cli
+    apt-get update && apt install azure-cli
 
 # Install azure functions core tools
 RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
