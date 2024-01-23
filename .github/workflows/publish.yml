@@ -35,7 +35,7 @@ jobs:
           docker run --rm clounsbury1/tools-container:latest az --version
           docker run --rm clounsbury1/tools-container:latest packer --version
           docker run --rm clounsbury1/tools-container:latest terraform --version
-          docker run --rm clounsbury1/tools-container:latest pwsh --version
+          docker run --rm clounsbury1/tools-container:latest 'pwsh -c \$psversiontable'
 
 
       
