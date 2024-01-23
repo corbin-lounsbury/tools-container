@@ -28,3 +28,9 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: clounsbury1/tools-container:latest
+
+      - name: Test the container
+        uses: ./
+        with:
+          image: 'clounsbury1/toolscontainer:latest'
+          command: "az version && pwsh -c '\$psversiontable' && packer version && terraform version && func version"
