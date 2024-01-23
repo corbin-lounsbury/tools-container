@@ -33,4 +33,4 @@ jobs:
         uses: ./
         with:
           image: 'clounsbury1/toolscontainer:latest'
-          command: "az version && pwsh -c '\$psversiontable' && packer version && terraform version && func version"
+          command: 'az version && pwsh -c \$psversiontable && packer version && terraform version && func version'
