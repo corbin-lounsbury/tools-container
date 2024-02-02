@@ -43,4 +43,5 @@ RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >
     curl -sL https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/microsoft-prod.list && \
     apt update && apt install -y azure-functions-core-tools-4
 
-ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
+# entrypoint that allows commands to be run and can run interactively
+ENTRYPOINT ["/bin/bash"]
