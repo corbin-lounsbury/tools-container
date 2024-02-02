@@ -28,14 +28,17 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: clounsbury1/tools-container:latest
-      
-      - name: Pull latest image from Docker Hub and test AZ Cli, packer, terraform, and powershell version
-        run: |
-          docker pull clounsbury1/tools-container:latest
-          docker run --rm clounsbury1/tools-container:latest 'az --version'
-          docker run --rm clounsbury1/tools-container:latest 'packer --version'
-          docker run --rm clounsbury1/tools-container:latest 'terraform --version'
-          docker run --rm clounsbury1/tools-container:latest 'pwsh -c \$psversiontable'
+    
+  test:
+    runs-on: [self-hosted, docker]
+    steps:  
+    - name: Pull latest image from Docker Hub and test AZ Cli, packer, terraform, and powershell version
+      run: |
+        docker pull clounsbury1/tools-container:latest
+        docker run --rm clounsbury1/tools-container:latest 'az --version'
+        docker run --rm clounsbury1/tools-container:latest 'packer --version'
+        docker run --rm clounsbury1/tools-container:latest 'terraform --version'
+        docker run --rm clounsbury1/tools-container:latest 'pwsh -c \$psversiontable'
 
 
       
