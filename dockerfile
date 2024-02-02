@@ -14,7 +14,8 @@ RUN apt update && apt install -y \
     ca-certificates \
     software-properties-common\
     python3 \
-    python3-pip
+    python3-pip \
+    mkisofs
 
 # install terraform and packer latest versions
 RUN wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
