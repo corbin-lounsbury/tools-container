@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive 
 
 # install basic tools
@@ -54,7 +54,7 @@ RUN pip3 install --upgrade pip && \
     pip3 install --upgrade setuptools && \
     pip3 install --upgrade wheel
 RUN pip3 install pyvmomi ansible requests
-RUN pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
+RUN pip3 install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
 
 # entrypoint that allows commands to be run and can run interactively
 ENTRYPOINT ["/bin/bash"]
