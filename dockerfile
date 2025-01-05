@@ -16,6 +16,7 @@ RUN apt update && apt install -y \
     software-properties-common\
     python3 \
     python3-pip \
+    pipx \
     mkisofs
 
 # install terraform and packer latest versions
@@ -53,6 +54,7 @@ RUN apt-add-repository --yes --update ppa:ansible/ansible && \
 # RUN pip3 install --upgrade pip && \
 #     pip3 install --upgrade setuptools && \
 #     pip3 install --upgrade wheel
+RUN python3 -m pip config set global.break-system-packages true
 RUN pip3 install pyvmomi ansible requests
 RUN pip3 install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
 
