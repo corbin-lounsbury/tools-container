@@ -44,5 +44,17 @@ RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >
     curl -sL https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/microsoft-prod.list && \
     apt update && apt install -y azure-functions-core-tools-4
 
+# Install ansible
+RUN apt-add-repository --yes --update ppa:ansible/ansible && \
+    apt install -y ansible
+
+# Install ansible pyvomi vsphere sdk
+RUN pip3 install --upgrade pip && \
+    pip3 install --upgrade setuptools && \
+    pip3 install --upgrade wheel && \
+    pip3 install --upgrade git+
+RUN pip3 install pyvmomi ansible requests
+RUN pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
+
 # entrypoint that allows commands to be run and can run interactively
 ENTRYPOINT ["/bin/bash"]
