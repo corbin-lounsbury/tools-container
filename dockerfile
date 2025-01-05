@@ -51,9 +51,6 @@ RUN apt-add-repository --yes --update ppa:ansible/ansible && \
     apt install -y ansible
 
 # Install ansible pyvomi vsphere sdk
-# RUN pip3 install --upgrade pip && \
-#     pip3 install --upgrade setuptools && \
-#     pip3 install --upgrade wheel
 RUN python3 -m pip config set global.break-system-packages true
 RUN pip3 install pyvmomi ansible requests
 RUN pip3 install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
