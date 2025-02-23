@@ -1,6 +1,9 @@
 name: Publish to DockerHub
 
 on:
+  # add workflow dispatch
+  workflow_dispatch:
+    
   push:
     branches:
       - 'main'
