@@ -44,12 +44,6 @@ RUN mkdir -p /etc/apt/keyrings && \
     tee /etc/apt/sources.list.d/azure-cli.list && \
     apt-get update && apt install azure-cli
 
-# Install azure functions core tools
-RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
-    mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \
-    curl -sL https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/microsoft-prod.list && \
-    apt update && apt install -y azure-functions-core-tools-4
-
 # Install ansible
 RUN apt-add-repository --yes --update ppa:ansible/ansible && \
     apt install -y ansible
