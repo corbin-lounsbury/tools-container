@@ -38,10 +38,5 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
 RUN apt-add-repository --yes --update ppa:ansible/ansible && \
     apt install -y ansible
 
-# Install ansible pyvomi vsphere sdk
-RUN python3 -m pip config set global.break-system-packages true
-RUN pip3 install pyvmomi ansible requests
-RUN pip3 install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
-
 # entrypoint that allows commands to be run and can run interactively
 ENTRYPOINT ["/bin/bash"]
