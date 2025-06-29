@@ -20,7 +20,8 @@ RUN apt update && apt install -y \
     python3 \
     python3-pip \
     pipx \
-    mkisofs
+    mkisofs \
+    gpg
 
 # install terraform and packer latest versions
 RUN wget -O - https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg &&\
