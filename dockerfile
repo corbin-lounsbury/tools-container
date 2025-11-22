@@ -3,6 +3,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+RUN apt install -y apt-transport-https ca-certificates gnupg lsb-release
 
 # install basic tools
 RUN apt update && apt install -y \
