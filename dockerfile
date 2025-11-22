@@ -32,31 +32,9 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
     dpkg -i packages-microsoft-prod.deb && \
     apt update && apt install -y powershell
 
-# install Azure CLI
-RUN mkdir -p /etc/apt/keyrings && \
-    curl -sLS https://packages.microsoft.com/keys/microsoft.asc | \
-    gpg --dearmor | \
-    tee /etc/apt/keyrings/microsoft.gpg > /dev/null && \
-    chmod go+r /etc/apt/keyrings/microsoft.gpg && \
-    AZ_DIST=$(lsb_release -cs) && \
-    echo "deb [arch=`dpkg --print-architecture` signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ $AZ_DIST main" | \
-    tee /etc/apt/sources.list.d/azure-cli.list && \
-    apt-get update && apt install azure-cli
-
-# Install azure functions core tools
-RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
-    mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \
-    curl -sL https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/microsoft-prod.list && \
-    apt update && apt install -y azure-functions-core-tools-4
-
 # Install ansible
 RUN apt-add-repository --yes --update ppa:ansible/ansible && \
     apt install -y ansible
-
-# Install ansible pyvomi vsphere sdk
-RUN python3 -m pip config set global.break-system-packages true
-RUN pip install pyvmomi ansible requests
-RUN pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
 
 # entrypoint that allows commands to be run and can run interactively
 ENTRYPOINT ["/bin/bash"]
